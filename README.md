@@ -66,6 +66,6 @@
 https://newsdata.io/api/1/news?apikey=your-api-key&country=us
 ```
 ### License
-This project is licensed under the MIT License - see the [LICENSE] file for details.
+This project is licensed under the [MIT](LICENSE) license
 
    

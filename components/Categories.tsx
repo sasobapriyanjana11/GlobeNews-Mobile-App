@@ -2,7 +2,6 @@ import { TouchableOpacity, View, ScrollView, StyleSheet, Text } from "react-nati
 import { Colors } from "@/constants/Colors";
 import newsCategoryList from "@/constants/Categories";
 import React, { useRef, useState } from "react";
-import {Category} from "@expo/metro-runtime/build/error-overlay/Data/parseLogBoxLog";
 
 type Props = {
     onCategoryChange: (category: string) => void;

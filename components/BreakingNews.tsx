@@ -21,9 +21,8 @@ const BreakingNews = ({ newsList }: Props) => {
     const [paginationIndex, setPaginationIndex] = useState(0);
     const scrollX = useSharedValue(0);
     const ref = useAnimatedRef<Animated.FlatList<any>>();
-    // const ref = useAnimatedRef<FlatList<NewsDataType>>(); // Updated here
     const [isAutoPlay, setIsAutoPlay] = useState(true);
-    const interval = useRef<NodeJS.Timeout | null>(null); // Updated here
+    const interval = useRef<NodeJS.Timeout | null>(null);
     const [width, setWidth] = useState(0);
 
     const onViewableItemChanged = ({

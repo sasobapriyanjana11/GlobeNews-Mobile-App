@@ -10,12 +10,12 @@ import Animated, {
 import { Colors } from "@/constants/Colors";
 
 const TabBarButton = ({
-  onPress,
-  onLongPress,
-  isFocused,
-  routeName,
-  label,
-}: {
+                        onPress,
+                        onLongPress,
+                        isFocused,
+                        routeName,
+                        label,
+                      }: {
   onPress: Function;
   onLongPress: Function;
   isFocused: boolean;
@@ -26,8 +26,8 @@ const TabBarButton = ({
 
   useEffect(() => {
     opacity.value = withSpring(
-      typeof isFocused === "boolean" ? (isFocused ? 1 : 0) : isFocused,
-      { duration: 50 }
+        typeof isFocused === "boolean" ? (isFocused ? 1 : 0) : isFocused,
+        { duration: 50 }
     );
   }, [opacity, isFocused]);
 
@@ -40,27 +40,27 @@ const TabBarButton = ({
   });
 
   return (
-    <Pressable
-      onPress={onPress}
-      onLongPress={onLongPress}
-      style={styles.tabbarBtn}
-    >
-      {icon[routeName]({
-        color: isFocused ? Colors.tabIconSelected : Colors.tabIconDefault,
-        focused: isFocused,
-      })}
-      <Animated.Text
-        style={[
-          {
-            color: isFocused ? Colors.tabIconSelected : Colors.tabIconDefault,
-            fontSize: 12,
-          },
-          animatedTextStyle,
-        ]}
+      <Pressable
+          onPress={onPress}
+          onLongPress={onLongPress}
+          style={styles.tabbarBtn}
       >
-        {label}
-      </Animated.Text>
-    </Pressable>
+        {icon[routeName]({
+          color: isFocused ? Colors.tabIconSelected : Colors.tabIconDefault,
+          focused: isFocused,
+        })}
+        <Animated.Text
+            style={[
+              {
+                color: isFocused ? Colors.tabIconSelected : Colors.tabIconDefault,
+                fontSize: 12,
+              },
+              animatedTextStyle,
+            ]}
+        >
+          {label}
+        </Animated.Text>
+      </Pressable>
   );
 };
 

@@ -16,7 +16,7 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
       width: e.nativeEvent.layout.width,
     });
   };
-  
+
   const tabPositionX = useSharedValue(0);
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -24,63 +24,63 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
       transform: [{ translateX: tabPositionX.value }],
     };
   });
-  
+
   return (
-    <View onLayout={onTabbarLayout} style={styles.tabbar}>
-      <Animated.View style={[animatedStyle, {
-        position: 'absolute',
-        backgroundColor: Colors.tint,
-        top: 52,
-        left: 26,
-        height: 8,
-        width: 40,
-      }]} />
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
+      <View onLayout={onTabbarLayout} style={styles.tabbar}>
+        <Animated.View style={[animatedStyle, {
+          position: 'absolute',
+          backgroundColor: Colors.tint,
+          top: 52,
+          left: 25,
+          height: 8,
+          width: 40,
+        }]} />
+        {state.routes.map((route, index) => {
+          const { options } = descriptors[route.key];
+          const label =
+              options.tabBarLabel !== undefined
+                  ? options.tabBarLabel
+                  : options.title !== undefined
+                      ? options.title
+                      : route.name;
 
-        const isFocused = state.index === index;
+          const isFocused = state.index === index;
 
-        const onPress = () => {
-          tabPositionX.value = withTiming(buttonWidth * index, {
-            duration: 200,
-          }); 
-          
-          const event = navigation.emit({
-            type: "tabPress",
-            target: route.key,
-            canPreventDefault: true,
-          });
+          const onPress = () => {
+            tabPositionX.value = withTiming(buttonWidth * index, {
+              duration: 200,
+            });
 
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name, route.params);
-          }
-        };
+            const event = navigation.emit({
+              type: "tabPress",
+              target: route.key,
+              canPreventDefault: true,
+            });
 
-        const onLongPress = () => {
-          navigation.emit({
-            type: "tabLongPress",
-            target: route.key,
-          });
-        };
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name, route.params);
+            }
+          };
 
-        return (
-          <TabBarButton
-            key={route.name}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            isFocused={isFocused}
-            routeName={route.name}
-            label={label}
-          />
-        );
-      })}
-    </View>
+          const onLongPress = () => {
+            navigation.emit({
+              type: "tabLongPress",
+              target: route.key,
+            });
+          };
+
+          return (
+              <TabBarButton
+                  key={route.name}
+                  onPress={onPress}
+                  onLongPress={onLongPress}
+                  isFocused={isFocused}
+                  routeName={route.name}
+                  label={label}
+              />
+          );
+        })}
+      </View>
   );
 }
 

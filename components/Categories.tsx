@@ -5,10 +5,10 @@ import React, { useRef, useState } from "react";
 import {Category} from "@expo/metro-runtime/build/error-overlay/Data/parseLogBoxLog";
 
 type Props = {
-    onCategoryChange: (category:string) => void;
+    onCategoryChange: (category: string) => void;
 }
 
-const Categories = ({onCategoryChanged}:Props) => {
+const Categories = ({ onCategoryChange }: Props) => {
     const scrollRef = useRef<ScrollView>(null);
     const itemRef = useRef<(View | null)[]>([]);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -25,7 +25,7 @@ const Categories = ({onCategoryChanged}:Props) => {
             },
             () => {} // Error callback
         );
-        onCategoryChanged(newsCategoryList[index].slug);
+        onCategoryChange(newsCategoryList[index].slug);
     };
 
     return (

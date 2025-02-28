@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     welcomeText: {
         fontSize:12,
         color : Colors.darkGrey,
+        marginTop:10
     },
     userName: {
         fontSize:14,

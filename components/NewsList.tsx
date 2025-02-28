@@ -2,6 +2,7 @@ import {View, StyleSheet, Text, Image} from "react-native";
 import {NewsDataType} from "@/types";
 import React from "react";
 import {Colors} from "@/constants/Colors";
+import Loading from "@/components/Loading";
 
 type Props = {
     newsList: Array<NewsDataType>
@@ -10,7 +11,10 @@ type Props = {
 const NewsList = ({newsList}: Props) => {
     return (
         <View style={styles.container}>
-            {newsList.map((item, index) => (
+            {newsList.length==0?(
+                <Loading size={'large'}/>
+                ):
+                newsList.map((item, index) => (
                 <View key={index} style={styles.itemContainer}>
                     <Image source={{uri: item.image_url}} style={styles.itemImg}/>
                     <View style={styles.itemInfo}>

@@ -2,7 +2,7 @@ import {ImageBackground, StyleSheet, Text, TouchableOpacity, View} from "react-n
 import React from "react";
 import { useRouter } from "expo-router";
 import {Colors} from "@/constants/Colors";
-import Animated, {FadeInDown, FadeInRight} from 'react-native-reanimated';
+import Animated, {FadeInDown, FadeInLeft, FadeInRight} from "react-native-reanimated";
 import { StatusBar } from 'expo-status-bar';
 
 const Page = () => {
@@ -12,23 +12,22 @@ const Page = () => {
     <View style={styles.container}>
         <StatusBar style="light"/>
         <ImageBackground
-            source={require('@/assets/images/getting-started.jpg')}
+            source={require('@/assets/images/landing-page.png')}
             style={{flex:1}}
             resizeMode="cover"
         >
-        <View style={styles.wrapper}>
-            <Animated.Text style={styles.title} entering={FadeInRight.delay(300).duration(500)}>Stay Updated !!</Animated.Text>
-            <Animated.Text style={styles.description} entering={FadeInRight.delay(700).duration(500)}>Get breaking news and personalized updates directly to your feed.</Animated.Text>
-            <Animated.View>
-                <TouchableOpacity entering={FadeInDown.delay(1200).duration(500)}
-                                  style={styles.btn}
-                                  onPress={() => router.replace("/(tabs)")}
-                >
-                    <Text style={styles.btnText}>Get Started</Text>
-                </TouchableOpacity>
-            </Animated.View>
-
-        </View>
+            <View style={styles.wrapper}>
+                <Animated.Text style={styles.title} entering={FadeInRight.delay(300).duration(500)}>Stay Updated</Animated.Text>
+                <Animated.Text style={styles.description} entering={FadeInLeft.delay(700).duration(500)}>Get the latest and personalized news with ease</Animated.Text>
+                <Animated.View entering={FadeInDown.delay(1200).duration(500)}>
+                    <TouchableOpacity style={styles.btn} onPress={() => router.replace("/(tabs)")}>
+                        <Text style={styles.btnText}>Get Started</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btn} onPress={() => router.replace("login")}>
+                        <Text style={styles.btnText}>Login</Text>
+                    </TouchableOpacity>
+                </Animated.View>
+            </View>
         </ImageBackground>
     </View>
   );

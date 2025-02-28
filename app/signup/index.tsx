@@ -4,6 +4,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { router, Stack } from "expo-router";
+import {Colors} from "@/constants/Colors";
 
 const SignUpScreen = () => {
     const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ const SignUpScreen = () => {
     const [errorMessage, setErrorMessage] = useState("");
 
     const handleSignUp = () => {
-        setErrorMessage(""); // Reset error message
+        setErrorMessage("");
         if (!email || !password) {
             setErrorMessage("Please enter both email and password.");
             return;
@@ -41,7 +42,7 @@ const SignUpScreen = () => {
 
     return (
         <ImageBackground
-            source={require('../../assets/images/getting-started.jpg')} // Update path accordingly
+            source={require('../../assets/images/signup-news.jpg')}
             style={styles.background}
             resizeMode="cover"
         >
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         paddingHorizontal: 20,
-        backgroundColor: 'rgba(0, 0, 0, 0.4)', // Optional overlay effect
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
     },
     title: {
         color: "#fff",
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     loginButton: {
-        backgroundColor: "#009688",
+        backgroundColor: Colors.black,
         paddingVertical: 15,
         borderRadius: 25,
         alignItems: "center",
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     registerLink: {
-        color: "#6bf1dd",
+        color: "#94efe2",
         fontWeight: "bold",
     },
 });
